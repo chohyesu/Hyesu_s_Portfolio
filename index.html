@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>신입 웹퍼블리셔 조혜수's Portfolio</title>
+  <title>조혜수's 웹퍼블리셔 Portfolio</title>
   <link rel="icon" href="../SSS_portfolio/img/favicon.png">
    <!--CSS-->
   <link rel="stylesheet" href="css/main.css">
@@ -21,6 +21,52 @@
   <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
   <script src="js/lightbox.js"></script>
   <script src="js/main.js"></script>
+  <script>
+    $(function() {
+      //홈 화면 스크롤 이벤트
+      
+      $(".page").each(function () {
+        
+        // 개별적으로 Wheel 이벤트 적용 mousewheel(IE/chrome/opera) DOMMouseScroll(FF)
+        $(this).on("mousewheel DOMMouseScroll", function (e) {
+            e.preventDefault();
+            var delta = 0;
+            
+        let n = $(this).index();
+            /* IE */
+            if (!event) event = window.event;
+            //휠에 대한 정보 얻기 파이어폭스 외 IE/Chrome/Opera = wheelDelta
+            if (event.wheelDelta) {
+                delta = event.wheelDelta / 50;
+                //평균 50~120 사이로 요소의 인식높이에 따라 다름(한 화면(height100%)기준일때는 120
+                if (window.opera) delta = -delta;
+            //휠에 대한 정보 얻기 Mozilla FF = detail
+            } else if (event.detail) delta = -event.detail / 3;
+            var moveTop = null;
+            // 마우스휠을 위에서 아래로
+            if (delta < 0) {
+                if ($(this).next() != undefined) {
+                    moveTop = $(this).next().offset().top;
+                }
+            // 마우스휠을 아래에서 위로
+            } else {
+                if ($(this).prev() != undefined) {
+                    moveTop = $(this).prev().offset().top;
+                }
+            }
+            // 화면 이동 0.8초(800)
+            $("html,body").stop().animate({
+                scrollTop: moveTop + 'px'
+            }, {
+                duration: 300, complete: function () {
+                }
+            });
+            //$('.bike img').animate({'left' : (n * 20) + '%'})
+            //console.log(n)
+        });
+    });
+    })
+  </script>
 </head>
 <body>
   <!--
@@ -28,8 +74,9 @@
     <a href="#main">본문바로보기</a>
   </div>
   -->
+<div id="wrap">
   <header>
-    <h1><a href="#"><span class="blind">내일의 태양을 디자인하는 웹퍼블리셔 조혜수입니다</span></a></h1>
+    <h1><a href="#"><span class="blind">Make it Count! 신입 웹퍼블리셔 조혜수입니다</span></a></h1>
     <ul id="gnb">
       <li>ABOUT ME</li>
       <li>SKILLS</li>
@@ -40,54 +87,55 @@
   </header>
 
   <main>
-    <section id="home" class="">
+    <section id="home" class="page">
       <div class="home_bg">
         <video src="img/bg_video.mp4" muted autoplay loop></video>
         <div class="home_txt">
-          <h2>Design Tomorrow's Sun</h2>
+          <h2>Make It Count!</h2>
           <em>신입 웹퍼블리셔, 조혜수입니다.</em>
         </div><!--//home_txt-->
+        <img src="img/home_scroll.png" alt="scroll down" class="scroll">
       </div><!--//home_bg-->
     </section>
 
-    <section id="about" class="clrfix">
+    <section id="about" class="page clrfix">
       <h2>ABOUT ME</h2>
       <div class="container about">
-        <div class="about_img">
-          <img src="img/blank.png" alt="조혜수">
-        </div><!--//about_img-->
+        <img src="img/blank.png" alt="조혜수" class="me">
+        <img src="img/blank.png" alt="" class="finger">
         <div class="about_txt">
           <div class="abTxt_P">
             <ul class="profile">
               <li class="title">Profile</li>
               <li>조혜수</li>
               <li>1993.03.27</li>
+              <li>관악구 거주</li>
             </ul>
           </div><!--//abTxt_P-->
           <div class="abTxt_HL">
             <ul class="history">
               <li class="title">History</li>
-              <li>- 이젠아카데미 UI/UX 웹퍼블리싱</li>
-              <li>- 하우디자인캐드 그래픽디자이너양성</li>
-              <li>- 홍익대학교 광고홍보학부 졸업</li>
-              <li>- 부성인터렉티브 온라인광고</li>
-              <li>- 미디컴윈윈 박람회기획</li>
+              <li><span>2022.04</span><strong>이젠아카데미 UI/UX 웹퍼블리싱 과정 수료</strong><br><em>(최우수상 / 개근상 수상)</em></li>
+              <li><span>2020-21</span><strong>교촌 홀매니저 근무</strong></li>
+              <li><span>2020.01</span><strong>하우디자인캐드 그래픽디자인 과정 수료</strong></li>
+              <li><span>2019.02</span><strong>홍익대학교 광고홍보학부 졸업</strong></li>
+              <li><span>2015</span><strong>부성인터렉티브 온라인광고집행 및 클라이언트 관리 업무</strong></li>
+              <li><span>2014</span><strong>미디컴윈윈 박람회 기획보조 및 현장컨트롤 업무</strong></li>
             </ul>
             <ul class="license">
               <li class="title">license</li>
-              <li>- 컴퓨터그래픽스운용기능사</li>
-              <li>- GTQ 포토샵 1급</li>
-              <li>- ITQ 아래한글</li>
-              <li>- ITQ 파워포인트</li>
-              <li>- 2종보통 운전면허자격증</li>
+              <li><strong>컴퓨터그래픽스운용기능사</strong></li>
+              <li><strong>GTQ 포토샵 1급</strong></li>
+              <li><strong>ITQ 아래한글</strong></li>
+              <li><strong>ITQ 파워포인트</strong></li>
+              <li><strong>2종보통 운전면허자격증</strong></li>
             </ul>
           </div><!--//abTxt_HL-->
         </div><!--//about_txt-->
       </div><!--//container-->
-      <img src="img/blank.png" alt="" class="bg_field">
     </section>
 
-    <section id="skills" class="">
+    <section id="skills" class="page">
       <h2>SKILLS</h2>
       <div class="container">
         <div class="progress_wrap">
@@ -127,35 +175,45 @@
           </div><!--//circle_wrap-->
         </div><!--//progress_wrap-->
       </div><!--//container-->
-      <img src="img/blank.png" alt="" class="bg_field">
     </section>
 
     <section id="graphic" class="">
       <div class="container">
         <h2>GRAPHIC</h2>
         <ul class="tabs">
-          <li>All</li>
-          <li>Visual Design</li>
-          <li>Editorial Design</li>
-          <li>Etc</li>
+          <li class="on" data-filter="*">All</li>
+          <li data-filter=".d1">Visual Design</li>
+          <li data-filter=".d2">Editorial Design</li>
+          <li data-filter=".d3">Etc</li>
         </ul>
         <ul class="graphic_thumb">
-          <li><a href=""><img src="img/thumb_vd_package.png" alt=""></a></li>
-          <li><a href=""><img src="img/thumb_vd_logo.jpg" alt=""></a></li>
-          <li><a href=""><img src="img/thumb_ed_poster.jpg" alt=""></a></li>
-          <li><a href=""><img src="img/thumb_ed_leaflet.jpg" alt=""></a></li>
-          <li><a href=""><img src="img/thumb_ed_book.jpg" alt=""></a></li>
-          <li><a href=""><img src="img/thumb_ed_magazine_1.jpg" alt=""></a></li>
-          <li><a href=""><img src="img/poligonart_IU.jpg" alt=""></a></li>
-          <li><a href=""><img src="img/ddeokdak_board.jpg" alt=""></a></li>
-          <li><a href=""><img src="img/ddeokdak_menu.JPG" alt=""></a></li>
-          <li><a href=""><img src="img/ddeokdak_stick.JPG" alt=""></a></li>
+          <!-- <li class="d1">
+            <a href="" data-lightbox="graphic">
+            <img src="" alt="">
+            <span>
+              <strong> <i class="fa fa-plus-circle" aria-hidden="true"></i></strong>
+            </span>
+            </a>
+          </li> -->
+          
+
+          <li><a href=""><img src="img/thumb_vd_package.png" alt="패키지디자인"></a></li>
+          <li><a href=""><img src="img/thumb_vd_logo.jpg" alt="로고디자인"></a></li>
+          <li><a href=""><img src="img/thumb_ed_poster.jpg" alt="포스터디자인"></a></li>
+          <li><a href=""><img src="img/thumb_ed_leaflet.jpg" alt="리플렛디자인"></a></li>
+          <li><a href=""><img src="img/thumb_ed_book.jpg" alt="북커버디자인"></a></li>
+          <li><a href=""><img src="img/thumb_ed_magazine_1.jpg" alt="잡지디자인"></a></li>
+          <li><a href=""><img src="img/poligonart_IU.jpg" alt="아이유 폴리곤아트"></a></li>
+          <li><a href=""><img src="img/ddeokdak_board.jpg" alt="떡볶이를사랑한닭 간판디자인"></a></li>
+          <li><a href=""><img src="img/ddeokdak_menu.JPG" alt="떡볶이를사랑한닭 자석메뉴판디자인"></a></li>
+          <li><a href=""><img src="img/ddeokdak_stick.JPG" alt="떡볶이를사랑한닭 젓가락패키지디자인"></a></li>
+          <li><img src="img/리터칭연습1.jpg" alt="피부보정"></li>
+          <li><img src="img/리터칭연습2.jpg" alt="피부보정"></li>
         </ul>
       </div><!--//container-->
-      <img src="img/blank.png" alt="" class="bg_field">
     </section>
 
-    <section id="web" class="">
+    <section id="web" class="page">
       <div class="container">
         <h2>WEB</h2>
         <div class="web_swiper">
@@ -221,11 +279,10 @@
           </div><!--//swiper_wrap-->
           <div class="web_pagination"></div><!--//web_pagination-->
         </div><!--//web_swiper-->
-        <button class="web_prev"><img src="img/prev.png" alt=""></button>
-        <button class="web_next"><img src="img/next.png" alt=""></button>
+        <button class="web_prev"><img src="img/prev_btn.png" alt=""></button>
+        <button class="web_next"><img src="img/next_btn.png" alt=""></button>
         <div class="web_scrollbar"></div><!--//web_scrollbar-->
       </div><!--//container-->
-      <img src="img/blank.png" alt="" class="bg_field">
     </section>
 
     <section id="contact" class="">
@@ -243,15 +300,13 @@
           <li><a href="#" target="_blank">자소서</a></li>
         </ul>
       </div><!--//contact_txt-->
-      
-      <!--메일주소나 연락처? sns 오픈카톡이나 큐알 등-->
     </section>
   </main>
 
   <footer>
     <div class="footer_wrap">
       <p class="footer_txt">본 페이지는 상업적 목적이 아닌 개인 포트폴리용으로 제작되었습니다. <br>
-         사용된 일부 이미지 및 폰트 등은 별도의 출처가 있음을 밝힙니다.</p>
+        사용된 일부 이미지 및 폰트 등은 별도의 출처가 있음을 밝힙니다.</p>
       <p class="copyright">Copyright &copy; 2022. Hyesu Cho All rights reserved.</p>
       <button class="top active">
         <p style="background-image: url(img/footer_top_btn.png);">
@@ -264,5 +319,6 @@
   <div class="bike">
     <img src="img/bg_me.png" alt="">
   </div>
+</div><!--//wrap-->  
 </body>
 </html>
