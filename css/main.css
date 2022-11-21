@@ -24,7 +24,7 @@ font-family: 'Itim', cursive;
 /*Common*/
 body {
   font-family: 'Itim', 'KOTRA_GOTHIC', 'GangwonEdu_OTFBoldA', 'NanumSquare', 'Noto Sans KR', '맑은 고딕', 'Apple SD Gothic', 'Dotum', sans-serif, cursive;
-  font-size: 18px; color: #333;background: #fffcde;
+  font-size: 18px; color: #333;background: #fffcde;overflow-x: hidden;
 }
 section {min-height: 100vh;padding-top: 120px;}
 section h2 {margin-bottom: 26px;text-align: center;font-size: 46px;font-weight: 600;}
@@ -34,40 +34,58 @@ button {cursor: pointer;line-height: 1;background: transparent;border: none;}
 .container {width: 80%;margin: auto;}
 
 /*Header*/
-header {padding: 20px 5%;position: fixed;left: 0;right: 0;top: 0;z-index: 9999;}
-header h1 a {width: 80px;height: 80px;float: left;background: url(../../img/logo.png) no-repeat;background-size: contain !important;cursor: pointer;}
+header {padding: 10px 5%;position: fixed;left: 0;right: 0;top: 0;z-index: 9999;}
+header h1 a {width: 120px;height: 120px;float: left;background: url(../img/logo.png) no-repeat;background-size: contain !important;cursor: pointer;}
 
 header #gnb {}
 header #gnb {float: right;}
-header #gnb li {float: left;margin-right: 46px;color: #FFF;font-size: 26px;font-weight: 600;line-height: 70px;cursor: pointer;user-select: none;}
+header #gnb li {float: left;margin-right: 46px;color: #FFF;font-size: 26px;font-weight: 600;line-height: 110px;cursor: pointer;user-select: none;}
 header #gnb li:last-child {margin-right: 0;}
 header #gnb li.on {color: green;}
 header #gnb li.on:after {/*GNB 글자 위에 채점동그라미 만들고싶어요..!!!*/
   content: "";display: block;height: 3px;background: #000;position: absolute;left: 0;right: 0;bottom: -7px;}
 
-header.bg_on {background: #ffeb7cb0;border-bottom: 1px solid #999;padding: 10px 5%;transition: all 0.3s}
-header.bg_on h1 a {width: 68px;height: 68px;background: url(../../img/logo.png) no-repeat;background-size: contain !important;transition: all 0.3s}
-header.bg_on #gnb li {color: #333;font-size: 22px;line-height: 68px;transition: all 0.3s;}
+header.bg_on {background: #ffeb7cb0;border-bottom: 1px solid #999;padding: 5px 5%;transition: all 0.3s}
+header.bg_on h1 a {width: 80px;height: 80px;background: url(../img/logo.png) no-repeat;background-size: contain !important;transition: all 0.3s}
+header.bg_on #gnb li {color: #333;font-size: 22px;line-height: 80px;transition: all 0.3s;}
 
 
 /*Home*/
 #home {height: 100vh;padding-top: 0;width: 100vw;height: 100vh;overflow: hidden;}
-#home .home_txt {position: absolute;left: 50%;top: 50%;transform: translate(-50%, -80%)}
+#home .home_txt {position: absolute;left: 50%;top: 54%;transform: translate(-50%, -80%)}
 #home .home_txt h2 {font-size: 64px;font-weight: 600;margin-bottom: 36px;}
 #home .home_txt em {font-size: 48px;font-weight: 400;font-family: 'GangwonEdu_OTFBoldA';}
+@keyframes scroll {
+  0% {bottom: 60px;}
+  50% {bottom: 40px;}
+  100% {bottom: 60px;}
+}
+#home .scroll {height: 68px;position: absolute;left: 50%;bottom: 60px;transform: translateX(-50%);animation: scroll 0.8s infinite;}
+#home .home_bg video {width: 100%;max-width: 100%;height: 100%;}
+/* #home .home_bg video {
+  position: fixed; right: 0; bottom: 0;
+        min-width: 100%; min-height: 100%;
+        width: auto; height: auto; z-index: -100;
+        background-size: cover;
+    } */
+
 
 /*About Me*/
 #about {}
 #about .container.about {}
-#about .about_img img {width: 360px;height: 519px;background: url(../../img/me_illust2.png) no-repeat center;background-size: cover;}
-#about .about_img img:hover {width: 360px;height: 519px;background: url(../../img/me_picture.png) no-repeat center;background-size: cover;transition: 0.1s;}
+#about img.me {width: 360px;height: 519px;background: url(../img/me_illust.png) no-repeat center;background-size: cover;}
+#about img.me:hover {width: 360px;height: 519px;background: url(../img/me_picture.png) no-repeat center;background-size: cover;transition: 0.1s;}
+#about img.finger {width: 80px;height: 107px;background: url(../img/about_finger.png) no-repeat;}
+#about img.finger:hover {width: 80px;height: 107px;background: url(../img/about_finger_tran.png) no-repeat;}
+
+
 
 #about .about_txt {float: right;}
 #about .about_txt .abTxt_P {float: left;margin-right: 50px;}
 #about .about_txt .abTxt_HL {float: right;}
 #about .about_txt li.title {font-size: 40px;}
 
-#about img.bg_field {width: 1920px;height: 144px;background: url(../../img/bg_field_1.png) no-repeat;background-size: cover;bottom: 0;}
+
 
 /*Skills*/
 #skills {}
@@ -75,12 +93,12 @@ header.bg_on #gnb li {color: #333;font-size: 22px;line-height: 68px;transition: 
 #skills .line_wrap {float: left;}
 #skills .circle_wrap {float: right;}
 #skills .circle_wrap .progress {float: left;}
-#skills img.bg_field {width: 1920px;height: 144px;background: url(../../img/bg_field_2.png) no-repeat;background-size: cover;bottom: 0;}
+#skills img.bg_field {width: 1920px;height: 144px;background: url(../img/bg_field_2.png) no-repeat;background-size: cover;bottom: 0;}
 
 /*Graphic*/
 #graphic {}
 #graphic .tabs {text-align: center;margin-bottom: 40px;}
-#graphic .tabs li {display: inline-block;font-size: 22px;
+#graphic .tabs li {display: inline-block;font-size: 22px;height: 300px;
 margin: 0 10px;cursor: pointer;user-select: none;font-weight: 500;position: relative;}
 #graphic .tabs li.on {color: green;}
 #graphic .tabs li.on:after {/*탭메뉴 글자 위에 채점동그라미 만들고싶어요..!!!*/
@@ -90,7 +108,7 @@ margin: 0 10px;cursor: pointer;user-select: none;font-weight: 500;position: rela
 #graphic .graphic_thumb li {width: 300px;float: left;margin: 10px;}
 #graphic .graphic_thumb li img {width: 100%;}
 
-#graphic img.bg_field {width: 1920px;height: 144px;background: url(../../img/bg_field_3.png) no-repeat;background-size: cover;}
+
 
 /*Web*/
 #web {position: relative;}
@@ -98,18 +116,18 @@ margin: 0 10px;cursor: pointer;user-select: none;font-weight: 500;position: rela
 #web .web_slide {width: 1200px;float: left;height: 500px;background: #fff;}
 #web .web_slide:after {content:""; display: block;clear: both;}
 #web .web_slide img {float: right;width: 60%;height: 100%;background-size: cover !important;}
-#web .web_slide img.web1 {background: url(../../img/web_mockup_1.jpg) center;}
+#web .web_slide img.web1 {background: url(../img/web_mockup_1.jpg) center;}
 #web .web_slide .web_txt {float: left;width: 35%;padding: 30px;}
 #web .web_slide .web_txt .work_title {font-size: 26px;margin-bottom: 20px;}
 #web .web_slide .web_txt .work_summary {height: 300px;}
 #web .web_slide .web_txt .link a {display: inline-block;padding: 15px 20px;border: 1px solid #999;border-radius: 5px;color: #999;margin-right: 10px;}
-#web .web_prev {position: absolute;left: calc(50% - 670px);top: 40%;}
-#web .web_next {position: absolute;right: calc(50% - 690px);top: 40%;}
+#web .web_prev {position: absolute;left: calc(50% - 710px);top: 40%;}
+#web .web_next {position: absolute;right: calc(50% - 730px);top: 40%;}
 #web .web_scrollbar {width: 1200px;height: 3px;margin: auto;background: #ededed;}
 #web .web_pagination {width: auto;position: absolute;left: auto;right: 20px;top: 20px;bottom: auto;z-index: 10;font-size: 14px;font-weight: 600;}
 #web .web_pagination span {display: inline-block;margin: 0 3px;vertical-align: middle;font-size: 24px;}
 
-#web img.bg_field {width: 1920px;height: 144px;background: url(../../img/bg_field_4.png) no-repeat;background-size: cover;}
+
 
 /*Contact*/
 #contact {height: 100vh;padding-top: 0;width: 100vw;height: 100vh;overflow: hidden;position: relative;}
@@ -117,5 +135,7 @@ margin: 0 10px;cursor: pointer;user-select: none;font-weight: 500;position: rela
 #contact .contact_txt h2 {font-size: 64px;font-weight: 600;margin-bottom: 36px;}
 #contact .contact_txt em {font-size: 48px;font-weight: 400;font-family: 'GangwonEdu_OTFBoldA';}
 
-.bike {position: fixed;width: 100vw;height: 50px;left: 0;bottom: 0;background: brown;}
-.bike img {position: absolute;left: 0;bottom: 20px;width: 200px;}
+.bike {position: fixed;width: 100vw;height: 42px;left: 0;bottom: 0;background: #b38044;}
+.bike img {position: absolute;left: 0;bottom: 16px;width: 200px;}
+
+
